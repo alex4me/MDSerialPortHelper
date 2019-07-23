@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPHelper", "SPHelper\SPHelper.csproj", "{D9302452-A121-411F-94A9-765E30C6004E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SPHelper_setup", "SPHelper_setup\SPHelper_setup.vdproj", "{DF572B56-081E-4400-A45F-30CF34657641}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{D9302452-A121-411F-94A9-765E30C6004E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9302452-A121-411F-94A9-765E30C6004E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9302452-A121-411F-94A9-765E30C6004E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF572B56-081E-4400-A45F-30CF34657641}.Debug|Any CPU.ActiveCfg = Debug
-		{DF572B56-081E-4400-A45F-30CF34657641}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
