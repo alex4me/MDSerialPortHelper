@@ -1,0 +1,74 @@
+﻿<Window x:Class="SPHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPHelper"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="SemiBold"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Icon="Icon1.ico"
+        Title="SerialPortHelper" Height="660" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="16*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource MaterialDesignLabel}" Margin=" 16,0" FontFamily="{DynamicResource MaterialDesignFont}">Received Message</Label>
+        <materialDesign:Card Padding="16" Margin="16,2" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
+            <TextBox Name="ReceivedMsg" IsReadOnly="True" TextWrapping="Wrap" FontWeight="Normal" FontFamily="Courier New" VerticalScrollBarVisibility="Auto"></TextBox>
+        </materialDesign:Card>
+        <Button Grid.Column="0"  Grid.Row="2" Margin="16,8" HorizontalAlignment="Left" Content="Save" Name="SaveToFile" Click="SaveToFile_Click"></Button>
+        <Button Click="ClearMsg" Grid.Column="0"  Grid.Row="2" Margin="16,8" HorizontalAlignment="Right" Content="Clear" ></Button>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+            <Grid>
+                <Label Grid.Column="1" Grid.Row="0"  Margin="16,2" >COM Port</Label>
+                <!--<Button Name="Reloadbtn" Margin="84,0" 
+        ToolTip="ReLoad" Height="Auto" Width="Auto" Click="Button_Click" Style="{DynamicResource MaterialDesignIconButton}" HorizontalAlignment="Left" Content="{materialDesign:PackIcon Kind=Refresh,Size=18}"/>-->
+                <materialDesign:PopupBox ToolTip="ReLoad" Margin="84,0" PreviewMouseUp="PopupBox_PreviewMouseUp" Name="reloadport">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Refresh"/>
+                    </materialDesign:PopupBox.ToggleContent>
+                </materialDesign:PopupBox>
+            </Grid>
+            <ComboBox Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Margin="16,0,16,2" Name="com_list" FontWeight="Normal"></ComboBox>
+            <Label Grid.Column="1" Grid.Row="0"  Margin="16,0" >Buad Rate</Label>
+            <ComboBox Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Margin="16,0,16,2" Name="buad_rate" FontWeight="Normal"></ComboBox>
+            <Label Grid.Column="1" Grid.Row="0"  Margin="16,0" >Parity</Label>
+            <ComboBox Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Margin="16,0,16,2" Name="ParityComCbobox" FontWeight="Normal"></ComboBox>
+            <Label Grid.Column="1" Grid.Row="0"  Margin="16,0" >DataBits</Label>
+            <ComboBox Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Margin="16,0,16,2" Name="DataBitsCbobox" FontWeight="Normal"></ComboBox>
+            <Label Grid.Column="1" Grid.Row="0"  Margin="16,0" >StopBits</Label>
+            <ComboBox Style="{DynamicResource MaterialDesignFloatingHintComboBox}" Margin="16,0,16,2" Name="StopBitsCbobox" FontWeight="Normal"></ComboBox>
+            <Button Name="ComOpen" Click="ComOpen_Click" HorizontalAlignment="Left" Margin="16,8"  Content="Open" Height="Auto" Width="Auto"></Button>
+            <Grid>
+                <Label Margin="16,0">Mesasage To Send</Label>
+                <Label HorizontalAlignment="Right" Margin="0,0,48,0">HEX Mode</Label>
+                <ToggleButton HorizontalAlignment="Right" Margin="0,0,16,0" Name="hex"></ToggleButton>
+            </Grid>
+            <materialDesign:Card Padding="16" Margin="16,2" Height="163" >
+                <TextBox ToolTip="Press Enter to Send or RightCtrl to NewLine " Name="SendBox" PreviewKeyDown="SendBox_PreviewKeyDown" VerticalAlignment="Stretch" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" FontWeight="Normal" TextWrapping="Wrap" FontFamily="Courier New"></TextBox>
+            </materialDesign:Card>
+        </StackPanel>
+        <!--<materialDesign:PopupBox Margin="0,0,16,0" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right">
+            <materialDesign:PopupBox.ToggleContent>
+                <materialDesign:PackIcon Kind="Send"/>
+            </materialDesign:PopupBox.ToggleContent>
+        </materialDesign:PopupBox>-->
+        <Button Grid.Column="1" Grid.Row="2" Content="Send" HorizontalAlignment="Right" Margin="16,8" Name="ComSend" Click="ComSend_Click" IsEnabled="False"></Button>
+        <Button Grid.Column="1" Grid.Row="2" Content="FromFile" HorizontalAlignment="Left" Margin="16,8" Name="OpenFile" Click="OpenFile_Click" ></Button>
+    </Grid>
+</Window>
