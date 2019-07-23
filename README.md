@@ -7,3 +7,6 @@ https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
 https://github.com/rafallopatka/ToastNotifications
 
+**DEMO**
+
+![avatar](Pic/demo.png)
