@@ -87,12 +87,10 @@ namespace SPHelper
                 com_list.DisplayMemberPath = "com";
                 com_list.SelectedValuePath = "com";
                 com_list.SelectedValue = _ports[0];
-                //ReceivedMsg.AppendText("Port List Loaded.");
                 ComOpen.IsEnabled = true;
             }
             else
             {
-                //MessageBox.Show("No Serial Port Available!");
                 notifier.ShowWarning("No Serial Port Available!");
             }
 
@@ -136,13 +134,8 @@ namespace SPHelper
             StopBitsCbobox.SelectedValuePath = "Sbits";
             StopBitsCbobox.DisplayMemberPath = "Sbits";
             StopBitsCbobox.SelectedIndex = 0;
-
-            //Reloadbtn.Content = new PackIcon { Kind = PackIconKind.Refresh,Foreground= System.Windows.Media.Brushes.Black};
+            
         }
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ReloadPort();
-        //}
 
         private void ReloadPort()
         {
@@ -171,7 +164,6 @@ namespace SPHelper
         {
             if (com_list.SelectedValue == null)
             {
-                //MessageBox.Show("No COM Port Selected!");
                 notifier.ShowError("No COM Port Selected!");
                 return;
             }
@@ -195,12 +187,10 @@ namespace SPHelper
                 }
                 catch
                 {
-                    //MessageBox.Show("Port is occupied or invalid PortName!\nPlease refresh Com Device List and try again.");
                     notifier.ShowError("Port Unavailable!");
                     return;
                 }
                 ComOpen.Content = "Close";
-                //AppendTextBox(_serialPort.PortName + " Opened.");
                 notifier.ShowSuccess(_serialPort.PortName + " Opened.");
                 ComSend.IsEnabled = _serialPort.IsOpen;
                 com_list.IsEnabled = false;
@@ -217,7 +207,6 @@ namespace SPHelper
                 {
                     _serialPort.Close();
                     ComOpen.Content = "Open";
-                    //AppendTextBox(_serialPort.PortName + " Closed.");
                     notifier.ShowInformation(_serialPort.PortName + " Closed.");
                     //_serialPort.DiscardOutBuffer();
                     //_serialPort.DiscardInBuffer();
@@ -231,7 +220,6 @@ namespace SPHelper
                 }
                 catch
                 {
-                    //MessageBox.Show("Can't Close COM Port!");
                     notifier.ShowError("Can't Close COM Port!");
                     return;
                 }
@@ -259,7 +247,6 @@ namespace SPHelper
                 }
                 catch
                 {
-                    //MessageBox.Show("Unable to send");
                     notifier.ShowError("Unable to send");
                     return;
                 }
@@ -293,7 +280,6 @@ namespace SPHelper
                 }
                 catch
                 {
-                    //MessageBox.Show("HEX Message Only");
                     notifier.ShowWarning("HEX Message Only");
                     return;
                 }
@@ -304,7 +290,6 @@ namespace SPHelper
                 }
                 catch
                 {
-                    //MessageBox.Show("Unable to send");
                     notifier.ShowError("Unable to send");
                     return;
                 }
@@ -366,8 +351,6 @@ namespace SPHelper
         {
             OpenFileDialog dlg = new OpenFileDialog();
 
-            //dlg.DefaultExt = ".txt";
-            //dlg.Filter ="Text Files|*.txt;*.json;*.xml;*.xaml;*.js;*.cs;*.config" + "|All Files|*.*";
             dlg.Filter = "All Files|*.*" + "|Text Files|*.txt;*.json;*.xml;*.xaml;*.js;*.cs;*.config";
 
             Nullable<bool> result = dlg.ShowDialog();
@@ -413,12 +396,7 @@ namespace SPHelper
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = DateTime.Now.ToString("hhmmss");
             saveFileDialog.DefaultExt = ".txt";
-            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
-            //Nullable<bool> result = saveFileDialog.ShowDialog();
-            //if (result == true)
-            //{
-            //    string filename = saveFileDialog.FileName;
-            //}
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";          
             if (saveFileDialog.ShowDialog() == true)
                 File.WriteAllText(saveFileDialog.FileName, ReceivedMsg.Text);
         }
@@ -427,5 +405,20 @@ namespace SPHelper
         {
             ReloadPort();
         }
+
+        //private void SaveToFile_MouseClick(object sender, RoutedEventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(ReceivedMsg.Text))
+        //    {
+        //        return;
+        //    }
+        //    byte[] byteArray = Encoding.Default.GetBytes(ReceivedMsg.Text);
+        //    string str_Filename = DateTime.Now.ToString("hhmmss");
+        //    FileStream fs_stream = new FileStream(str_Filename, FileMode.CreateNew);
+        //    fs_stream.Write(byteArray, 0, byteArray.Length);
+        //    fs_stream.Close();
+        //    string toast = "Save file to " + str_Filename;
+        //    notifier.ShowSuccess(toast);
+        //}
     }
 }
