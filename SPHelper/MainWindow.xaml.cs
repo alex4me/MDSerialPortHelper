@@ -185,9 +185,9 @@ namespace SPHelper
                     ComSend.IsEnabled = _serialPort.IsOpen;
                     _serialPort.DataReceived += new SerialDataReceivedEventHandler(ReceiveMessage);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    notifier.ShowError("Port Unavailable!");
+                    notifier.ShowError(ex.Message);
                     return;
                 }
                 ComOpen.Content = "Close";
@@ -206,6 +206,7 @@ namespace SPHelper
                 try
                 {
                     _serialPort.Close();
+					_serialPort.Dispose();
                     ComOpen.Content = "Open";
                     notifier.ShowInformation(_serialPort.PortName + " Closed.");
                     //_serialPort.DiscardOutBuffer();
@@ -218,9 +219,9 @@ namespace SPHelper
                     StopBitsCbobox.IsEnabled = true;
                     reloadport.IsEnabled = true;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    notifier.ShowError("Can't Close COM Port!");
+                    notifier.ShowError(ex.Message);
                     return;
                 }
             }
@@ -245,9 +246,9 @@ namespace SPHelper
                     //_serialPort.Write(sendCharArray, 0, sendCharArray.Length);
                     //_serialPort.Write(sendByteArray, 0, sendByteArray.Length);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    notifier.ShowError("Unable to send");
+                    notifier.ShowError(ex.Message);
                     return;
                 }
             }
@@ -288,9 +289,9 @@ namespace SPHelper
                     _serialPort.Write(sendBuffer, 0, sendBuffer.Length);
                     SendBox.Clear();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    notifier.ShowError("Unable to send");
+                    notifier.ShowError(ex.Message);
                     return;
                 }
             }
