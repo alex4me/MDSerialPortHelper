@@ -38,15 +38,15 @@ namespace SPHelper
 
         private static string[] _ports;//声明串口数组
 
-        IList<portdetail> portlist = new List<portdetail>();//创建下拉串口列表
+        List<portdetail> portlist = new List<portdetail>();//创建下拉串口列表
 
-        IList<portdetail> rateList = new List<portdetail>();//创建下拉波特率列表
+        List<portdetail> rateList = new List<portdetail>();//创建下拉波特率列表
 
-        IList<portdetail> dataBits = new List<portdetail>();//创建下拉数据位列表
+        List<portdetail> dataBits = new List<portdetail>();//创建下拉数据位列表
 
-        IList<portdetail> stopBits = new List<portdetail>();//创建下拉停止位列表
+        List<portdetail> stopBits = new List<portdetail>();//创建下拉停止位列表
 
-        IList<portdetail> comParity = new List<portdetail>();//创建下拉校验位列表
+        List<portdetail> comParity = new List<portdetail>();//创建下拉校验位列表
 
         public bool? Hexmode;
 
